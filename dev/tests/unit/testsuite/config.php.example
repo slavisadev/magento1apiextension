@@ -1,0 +1,6 @@
+<?php
+define('API_URL','<magento-root>/api/rest/');
+define('TOKEN','<token>');
+define('SECRET','<secret>');
+define('CONSUMER_KEY','<consumer-key>');
+define('CONSUMER_SECRET','<consumer-secret>');

@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    ApiExtension
+ * @package     ApiExtension_Magento
+ * @author      Slavisa Perisic
+ * @copyright   2018 CerseiLabs.com
+ * @license     http://license.apiExtension.com/  Unlimited Commercial License
+ */
+-->
+<config>
+    <menu>
+        <system>
+            <children>
+                <api>
+                    <children>
+                        <webhooks module="apiExtension">
+                            <title>REST - Manage Web hooks</title>
+                            <action>apiExtension/adminhtml_webhooks</action>
+                            <sort_order>300</sort_order>
+                        </webhooks>
+                    </children>
+                </api>
+            </children>
+        </system>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <apiExtension>
+                                        <title>ApiExtension</title>
+                                    </apiExtension>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

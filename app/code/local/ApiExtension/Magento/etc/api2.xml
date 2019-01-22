@@ -1,0 +1,972 @@
+<?xml version="1.0"?><!--
+/**
+ * @category    ApiExtension
+ * @package     ApiExtension_Magento
+ * @author      ApiExtension
+ * @copyright   2016 ApiExtension.com
+ * @license     http://license.apiExtension.com/  Unlimited Commercial License
+ */
+-->
+<config>
+    <api2>
+        <resource_groups>
+            <general translate="title" module="ApiExtension_Magento">
+                <title>ApiExtension API</title>
+                <sort_order>0</sort_order>
+            </general>
+        </resource_groups>
+        <resources>
+            <!-- Version resources -->
+            <version translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_version</model>
+                <title>Get extension version</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <retrieve>1</retrieve>
+                    </admin>
+                </privileges>
+                <routes>
+                    <route_collection>
+                        <route>/version</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                </routes>
+                <versions>1</versions>
+            </version>
+            <!-- Configuration resources -->
+            <configuration translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_configuration</model>
+                <title>Get configuration</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <retrieve>1</retrieve>
+                    </admin>
+                </privileges>
+                <routes>
+                    <route_entity>
+                        <route>/configuration</route>
+                        <action_type>entity</action_type>
+                    </route_entity>
+                </routes>
+                <versions>1</versions>
+            </configuration>
+            <!-- Improve existing product resources -->
+            <product translate="title" module="ApiExtension_Magento">
+                <attributes>
+                    <categories>Categories Array</categories>
+                    <required_options>Has Required Options</required_options>
+                    <configurable_product_options>Configurable products options</configurable_product_options>
+                    <configurable_product_links>Configurable product links</configurable_product_links>
+                    <has_parent>Has Parent</has_parent>
+                    <stock_data>Stock Items</stock_data>
+                    <group_price>Group Price</group_price>
+                    <tier_price>Tier prices</tier_price>
+                    <tier_price>Tier prices</tier_price>
+                </attributes>
+                <exclude_attributes>
+                    <admin>
+                        <write>
+                            <created_at>1</created_at>
+                            <updated_at>1</updated_at>
+                            <has_options>1</has_options>
+                            <required_options>1</required_options>
+                        </write>
+                    </admin>
+                </exclude_attributes>
+            </product>
+            <!-- Improve stock item -->
+            <stock_item translate="title" module="ApiExtension_Magento">
+                <group>cataloginventory</group>
+                <model>cataloginventory/api2_stock_item</model>
+                <working_model>cataloginventory/stock_item</working_model>
+                <title>Stock Item</title>
+                <privileges>
+                    <admin>
+                        <retrieve>1</retrieve>
+                        <update>1</update>
+                    </admin>
+                </privileges>
+                <attributes translate="" module="ApiExtension_Magento">
+                    <sku>SKU</sku>
+                </attributes>
+            </stock_item>
+            <!-- Improve existing order resources -->
+            <order translate="title" module="ApiExtension_Magento">
+                <group>sales</group>
+                <sort_order>10</sort_order>
+                <model>sales/api2_order</model>
+                <title>Orders</title>
+                <privileges>
+                    <admin>
+                        <create>1</create>
+                        <update>1</update>
+                        <retrieve>1</retrieve>
+                    </admin>
+                </privileges>
+                <routes>
+                    <route_entity>
+                        <route>/orders/:id</route>
+                        <action_type>entity</action_type>
+                    </route_entity>
+                    <route_collection>
+                        <route>/orders</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                </routes>
+                <attributes
+                        translate="entity_id increment_id created_at status shipping_description _payment_method base_currency_code store_currency_code store_name remote_ip store_to_order_rate subtotal subtotal_incl_tax discount_amount base_grand_total grand_total shipping_amount shipping_tax_amount shipping_incl_tax tax_amount _tax_name _tax_rate coupon_code base_discount_amount base_subtotal base_shipping_amount base_shipping_tax_amount base_tax_amount total_paid base_total_paid total_refunded base_total_refunded base_subtotal_incl_tax base_total_due total_due shipping_discount_amount base_shipping_discount_amount discount_description customer_balance_amount base_customer_balance_amount base_customer_balance_amount _gift_message _order_comments customer_id"
+                        module="ApiExtension_Magento">
+                    <entity_id>Order ID (internal)</entity_id>
+                    <increment_id>Order ID</increment_id>
+                    <created_at>Order Date</created_at>
+                    <status>Order Status</status>
+                    <order_items>Order Items</order_items>
+                    <shipping_description>Shipping Method</shipping_description>
+                    <_payment_method>Payment Method</_payment_method>
+                    <base_currency_code>Base Currency</base_currency_code>
+                    <store_currency_code>Order Currency</store_currency_code>
+                    <store_name>Store Name</store_name>
+                    <remote_ip>Placed from IP</remote_ip>
+                    <store_to_order_rate>Store Currency to Order Currency Rate</store_to_order_rate>
+                    <subtotal>Subtotal</subtotal>
+                    <subtotal_incl_tax>Subtotal Including Tax</subtotal_incl_tax>
+                    <discount_amount>Discount</discount_amount>
+                    <base_grand_total>Grand Total to Be Charged</base_grand_total>
+                    <grand_total>Grand Total</grand_total>
+                    <shipping_amount>Shipping Amount</shipping_amount>
+                    <shipping_tax_amount>Shipping Including Tax</shipping_tax_amount>
+                    <shipping_incl_tax>Shipping Tax</shipping_incl_tax>
+                    <tax_amount>Tax Amount</tax_amount>
+                    <_tax_name>Tax Name</_tax_name>
+                    <_tax_rate>Tax Rate</_tax_rate>
+                    <coupon_code>Coupon Code</coupon_code>
+                    <base_discount_amount>Base Discount</base_discount_amount>
+                    <base_subtotal>Base Subtotal</base_subtotal>
+                    <base_shipping_amount>Base Shipping</base_shipping_amount>
+                    <base_shipping_tax_amount>Base Shipping Tax</base_shipping_tax_amount>
+                    <base_tax_amount>Base Tax Amount</base_tax_amount>
+                    <total_paid>Total Paid</total_paid>
+                    <base_total_paid>Base Total Paid</base_total_paid>
+                    <total_refunded>Total Refunded</total_refunded>
+                    <base_total_refunded>Base Total Refunded</base_total_refunded>
+                    <base_subtotal_incl_tax>Base Subtotal Including Tax</base_subtotal_incl_tax>
+                    <base_total_due>Base Total Due</base_total_due>
+                    <total_due>Total Due</total_due>
+                    <shipping_discount_amount>Shipping Discount</shipping_discount_amount>
+                    <base_shipping_discount_amount>Base Shipping Discount</base_shipping_discount_amount>
+                    <discount_description>Discount</discount_description>
+                    <customer_balance_amount>Customer Balance</customer_balance_amount>
+                    <base_customer_balance_amount>Base Customer Balance</base_customer_balance_amount>
+                    <_gift_message>Gift Message</_gift_message>
+                    <_order_comments>Order Comments</_order_comments>
+                    <customer_id>Customer ID</customer_id>
+                </attributes>
+                <include_attributes>
+                    <customer>
+                        <read>
+                            <entity_id>1</entity_id>
+                            <increment_id>1</increment_id>
+                            <created_at>1</created_at>
+                            <status>1</status>
+                            <shipping_description>1</shipping_description>
+                            <_payment_method>1</_payment_method>
+                            <base_currency_code>1</base_currency_code>
+                            <store_currency_code>1</store_currency_code>
+                            <subtotal>1</subtotal>
+                            <subtotal_incl_tax>1</subtotal_incl_tax>
+                            <discount_amount>1</discount_amount>
+                            <base_grand_total>1</base_grand_total>
+                            <grand_total>1</grand_total>
+                            <shipping_amount>1</shipping_amount>
+                            <shipping_tax_amount>1</shipping_tax_amount>
+                            <shipping_incl_tax>1</shipping_incl_tax>
+                            <tax_amount>1</tax_amount>
+                            <_tax_name>1</_tax_name>
+                            <_tax_rate>1</_tax_rate>
+                            <_gift_message>1</_gift_message>
+                            <_order_comments>1</_order_comments>
+                        </read>
+                    </customer>
+                </include_attributes>
+                <force_attributes>
+                    <customer>
+                        <payment_method>1</payment_method>
+                        <addresses>1</addresses>
+                        <order_items>1</order_items>
+                        <gift_message_from>1</gift_message_from>
+                        <gift_message_to>1</gift_message_to>
+                        <gift_message_body>1</gift_message_body>
+                        <order_comments>1</order_comments>
+                        <tax_name>1</tax_name>
+                        <tax_rate>1</tax_rate>
+                    </customer>
+                    <admin>
+                        <payment_method>1</payment_method>
+                        <addresses>1</addresses>
+                        <order_items>1</order_items>
+                        <gift_message_from>1</gift_message_from>
+                        <gift_message_to>1</gift_message_to>
+                        <gift_message_body>1</gift_message_body>
+                        <order_comments>1</order_comments>
+                        <tax_name>1</tax_name>
+                        <tax_rate>1</tax_rate>
+                    </admin>
+                </force_attributes>
+                <versions>1</versions>
+            </order>
+            <!-- Create aliases for product_image resource -->
+            <product_media translate="title" module="ApiExtension_Magento">
+                <group>catalog_product</group>
+                <model>catalog/api2_product_image</model>
+                <title>Product Image</title>
+                <sort_order>70</sort_order>
+                <privileges>
+                    <admin>
+                        <create>1</create>
+                        <retrieve>1</retrieve>
+                        <update>1</update>
+                        <delete>1</delete>
+                    </admin>
+                    <customer>
+                        <retrieve>1</retrieve>
+                    </customer>
+                    <guest>
+                        <retrieve>1</retrieve>
+                    </guest>
+                </privileges>
+                <attributes translate="id file_name file_content file_mime_type label position types exclude url"
+                            module="ApiExtension_Magento">
+                    <id>ID</id>
+                    <file_name>File Name</file_name>
+                    <file_content>File Content</file_content>
+                    <file_mime_type>File MIME Type</file_mime_type>
+                    <label>Label</label>
+                    <position>Position</position>
+                    <types>Type</types>
+                    <exclude>Exclude</exclude>
+                    <url>URL</url>
+                </attributes>
+                <exclude_attributes>
+                    <admin>
+                        <write>
+                            <id>1</id>
+                            <url>1</url>
+                        </write>
+                    </admin>
+                </exclude_attributes>
+                <routes>
+                    <route_entity>
+                        <route>/products/:id/media/:image</route>
+                        <action_type>entity</action_type>
+                    </route_entity>
+                    <route_entity_with_store>
+                        <route>/products/:id/media/:image/store/:store</route>
+                        <action_type>entity</action_type>
+                    </route_entity_with_store>
+                    <route_collection>
+                        <route>/products/:id/media</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                    <route_collection_with_store>
+                        <route>/products/:id/media/store/:store</route>
+                        <action_type>collection</action_type>
+                    </route_collection_with_store>
+                </routes>
+                <versions>1</versions>
+            </product_media>
+            <!-- Product attribute set resources -->
+            <productattributeset translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_productAttributeSet</model>
+                <title>Gets Product Attribute Set</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <retrieve>1</retrieve>
+                    </admin>
+                </privileges>
+                <attributes module="ApiExtension_Magento">
+                    <attribute_set_id>Attribute set ID</attribute_set_id>
+                    <attribute_set_name>Attribute set name</attribute_set_name>
+                    <sort_order>Sort order</sort_order>
+                    <entity_type_id>EAV Type of attribute set</entity_type_id>
+                </attributes>
+                <routes>
+                    <route_collection>
+                        <route>/eav/attribute-sets/list</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                    <route_entity>
+                        <route>/eav/attribute-sets/:id</route>
+                        <action_type>entity</action_type>
+                    </route_entity>
+                </routes>
+                <versions>1</versions>
+            </productattributeset>
+            <!-- Product attribute resources -->
+            <productattributes translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_productAttributes</model>
+                <title>Product Attributes</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <retrieve>1</retrieve>
+                    </admin>
+                </privileges>
+                <attributes module="ApiExtension_Magento">
+                    <id>Attribute ID</id>
+                    <!--<attribute_code>Attribute Code</attribute_code>-->
+                    <!--<frontend_input>Attribute Type</frontend_input>-->
+                    <!--<is_configurable>Is required field</is_configurable>-->
+                    <!--<is_global>Attribute Scope</is_global>-->
+                    <!--<configurable>Is Configurable</configurable>-->
+                </attributes>
+                <routes>
+                    <route_collection>
+                        <route>/products/attribute-sets/:id/attributes</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                </routes>
+                <versions>1</versions>
+            </productattributes>
+            <!-- Customer attribute resources -->
+            <customerattributes translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_customerAttributes</model>
+                <title>Customer Attributes</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <retrieve>1</retrieve>
+                    </admin>
+                </privileges>
+                <attributes module="ApiExtension_Magento">
+                    <id>Attribute ID</id>
+                    <attribute_code>Attribute Code</attribute_code>
+                    <attribute_type>Is required</attribute_type>
+                    <required>Is required attribute</required>
+                    <options>Is system attribute</options>
+                </attributes>
+                <routes>
+                    <route_collection>
+                        <route>/customer/attributes</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                </routes>
+                <versions>1</versions>
+            </customerattributes>
+            <!-- Product options resources -->
+            <productoption translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_productOption</model>
+                <title>Get All Product Options</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <retrieve>1</retrieve>
+                    </admin>
+                </privileges>
+                <attributes module="ApiExtension_Magento">
+                    <attribute_code>Attribute Code</attribute_code>
+                    <attribute_type>Attribute Name</attribute_type>
+                    <required>Required Attribute</required>
+                    <options>Options</options>
+                </attributes>
+                <routes>
+                    <route_collection>
+                        <route>/product/attribute/options</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                </routes>
+                <versions>1</versions>
+            </productoption>
+            <!-- Customer groups resources -->
+            <customergroups translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_customerGroups</model>
+                <title>Customer Groups</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <create>1</create>
+                        <retrieve>1</retrieve>
+                        <update>1</update>
+                        <delete>1</delete>
+                    </admin>
+                </privileges>
+                <attributes module="ApiExtension_Magento">
+                    <customer_group_id>Customer Group ID</customer_group_id>
+                    <customer_group_code>Customer Group code</customer_group_code>
+                    <tax_class_id>Tax class ID</tax_class_id>
+                </attributes>
+                <routes>
+                    <route_collection>
+                        <route>/customerGroups</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                    <route_entity>
+                        <route>/customerGroups/:id</route>
+                        <action_type>entity</action_type>
+                    </route_entity>
+                </routes>
+                <versions>1</versions>
+            </customergroups>
+            <!-- Categories resources -->
+            <categories translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_categories</model>
+                <title>Categories</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <create>1</create>
+                        <retrieve>1</retrieve>
+                        <update>1</update>
+                        <delete>1</delete>
+                    </admin>
+                </privileges>
+                <attributes module="ApiExtension_Magento">
+                    <name>Category name</name>
+                    <entity_id>Category ID</entity_id>
+                    <parent_id>Parent ID</parent_id>
+                    <path>Path</path>
+                    <level>Category level</level>
+                    <url_path>URL path</url_path>
+                    <children_count>Number of child categories</children_count>
+                    <all_children>All child categories of the current category</all_children>
+                    <available_sort_by>All available options by which products in the category can be sorted
+                    </available_sort_by>
+                    <description>Category description</description>
+                    <meta_title>Category meta title</meta_title>
+                    <meta_keywords>Category meta keywords</meta_keywords>
+                    <meta_description>Category meta description</meta_description>
+                    <custom_layout_update>Custom layout update (optional)</custom_layout_update>
+                    <is_active>Defines whether the category is active</is_active>
+                    <is_anchor>Defines whether the category is anchored</is_anchor>
+                    <include_in_menu>Defines whether the category is available on the Magento top menu bar
+                    </include_in_menu>
+                    <landing_page>Landing page (optional)</landing_page>
+                    <custom_apply_to_products>Apply the custom design to all products assigned to the
+                        category(optional)
+                    </custom_apply_to_products>
+                    <custom_design>The custom design for the category (optional)</custom_design>
+                    <page_layout>Type of page layout that the category should use (optional)</page_layout>
+                    <display_mode>Content that will be displayed on the category view page (optional)</display_mode>
+                    <custom_design_from>Date starting from which the custom design will be applied to the category
+                        (optional)
+                    </custom_design_from>
+                    <custom_design_to>Date till which the custom design will be applied to the category (optional)
+                    </custom_design_to>
+                    <filter_price_range>Price range of each price level displayed in the layered navigation block
+                    </filter_price_range>
+                    <created_at>Date when the category was created</created_at>
+                    <updated_at>Date when the category was updated</updated_at>
+                </attributes>
+                <routes>
+                    <route_collection>
+                        <route>/categories</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                    <route_entity>
+                        <route>/categories/:id</route>
+                        <action_type>entity</action_type>
+                    </route_entity>
+                </routes>
+                <versions>1</versions>
+            </categories>
+            <!-- Invoices resources -->
+            <invoices translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_invoices</model>
+                <title>Invoices</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <retrieve>1</retrieve>
+                    </admin>
+                </privileges>
+                <attributes module="ApiExtension_Magento">
+                    <entity_id>Order increment ID</entity_id>
+                    <increment_id>Increment ID</increment_id>
+                    <order_increment_id>Order increment ID</order_increment_id>
+                    <parent_id>Parent ID</parent_id>
+                    <base_currency_code>Base currency code</base_currency_code>
+                    <base_discount_amount>Base discount amount</base_discount_amount>
+                    <base_grand_total>Base grand total</base_grand_total>
+                    <base_shipping_amount>Base shipping amount</base_shipping_amount>
+                    <base_shipping_incl_tax>Base shipping amount including tax amount</base_shipping_incl_tax>
+                    <base_shipping_tax_amount>Base shipping tax amount</base_shipping_tax_amount>
+                    <base_subtotal>Base subtotal</base_subtotal>
+                    <base_subtotal_incl_tax>Base subtotal including tax</base_subtotal_incl_tax>
+                    <base_tax_amount>Base tax amount</base_tax_amount>
+                    <base_total_refunded>Base total refunded</base_total_refunded>
+                    <base_to_global_rate>Base to global rate</base_to_global_rate>
+                    <base_to_order_rate>Base to order rate</base_to_order_rate>
+                    <billing_address_id>Billing address ID</billing_address_id>
+                    <can_void_flag>Can void flag</can_void_flag>
+                    <discount_amount>Discount amount</discount_amount>
+                    <email_sent>Email sent</email_sent>
+                    <global_currency_code>Global currency code</global_currency_code>
+                    <grand_total>Grand total</grand_total>
+                    <is_used_for_refund>Is used for refund</is_used_for_refund>
+                    <order_currency_code>Order currency code</order_currency_code>
+                    <order_id>Order ID</order_id>
+                    <shipping_address_id>Shipping address ID</shipping_address_id>
+                    <shipping_amount>Shipping amount</shipping_amount>
+                    <shipping_incl_tax>Shipping including tax</shipping_incl_tax>
+                    <shipping_tax_amount>Shipping tax amount</shipping_tax_amount>
+                    <state>Order state</state>
+                    <store_currency_code>Store currency code</store_currency_code>
+                    <store_id>Store ID</store_id>
+                    <store_to_base_rate>Store to base rate</store_to_base_rate>
+                    <store_to_order_rate>Store to order rate</store_to_order_rate>
+                    <subtotal>Subtotal</subtotal>
+                    <subtotal_incl_tax>Subtotal including tax</subtotal_incl_tax>
+                    <tax_amount>Tax amount</tax_amount>
+                    <total_qty>Total qty</total_qty>
+                    <created_at>Date of creation</created_at>
+                    <updated_at>Date of updating</updated_at>
+                </attributes>
+                <force_attributes>
+                    <admin>
+                        <items>1</items>
+                        <comments>1</comments>
+                    </admin>
+                </force_attributes>
+                <routes>
+                    <route_collection>
+                        <route>/invoices</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                    <route_entity>
+                        <route>/invoices/:id</route>
+                        <action_type>entity</action_type>
+                    </route_entity>
+                </routes>
+                <versions>1</versions>
+            </invoices>
+            <!-- Configurable product links resources -->
+            <configurableproductlinks translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_configurableProductLinks</model>
+                <title>Configurable Product Links</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <retrieve>1</retrieve>
+                        <delete>1</delete>
+                    </admin>
+                </privileges>
+                <attributes module="ApiExtension_Magento">
+                    <option>Option</option>
+                </attributes>
+                <routes>
+                    <route_entity>
+                        <route>/configurable-products/:id/children/:childSku</route>
+                        <action_type>entity</action_type>
+                    </route_entity>
+                    <route_collection>
+                        <route>/configurable-products/:id/child</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                </routes>
+                <versions>1</versions>
+            </configurableproductlinks>
+            <!-- Tracking resources -->
+            <tracking translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_tracking</model>
+                <title>Gets Tracking Data</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <retrieve>1</retrieve>
+                    </admin>
+                </privileges>
+                <attributes module="ApiExtension_Magento">
+                    <order_increment_id>Order Increment ID</order_increment_id>
+                    <protect_code>Protect Code</protect_code>
+                    <tracking_data>Tracking Data</tracking_data>
+                    <tracking_number>Tracking Number</tracking_number>
+                    <carrier_code>Carrier Code</carrier_code>
+                    <carrier_name>Carrier Name</carrier_name>
+                </attributes>
+                <routes>
+                    <route_collection>
+                        <route>/tracking</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                </routes>
+                <versions>1</versions>
+            </tracking>
+            <!-- Website resources -->
+            <websites translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_website</model>
+                <title>Gets Websites</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <retrieve>1</retrieve>
+                    </admin>
+                </privileges>
+                <attributes module="ApiExtension_Magento">
+                    <id>Website ID</id>
+                    <code>Code</code>
+                    <name>Name</name>
+                    <default_group_id>Is Default</default_group_id>
+                </attributes>
+                <routes>
+                    <route_collection>
+                        <route>/stores/websites</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                    <route_entity>
+                        <route>/websites/:id</route>
+                        <action_type>entity</action_type>
+                    </route_entity>
+                </routes>
+                <versions>1</versions>
+            </websites>
+            <!-- StoreView resources -->
+            <storeviews translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_storeview</model>
+                <title>Gets Store Views</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <retrieve>1</retrieve>
+                    </admin>
+                </privileges>
+                <attributes module="ApiExtension_Magento">
+                    <id>Store View ID</id>
+                    <code>Store View Code</code>
+                    <name>Store View Name</name>
+                    <website_id>Website ID</website_id>
+                    <store_group_id>Store ID</store_group_id>
+                </attributes>
+                <routes>
+                    <route_collection>
+                        <route>/store/storeViews</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                </routes>
+                <versions>1</versions>
+            </storeviews>
+            <!-- Order Statuses resources -->
+            <orderstatuses translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_orderStatuses</model>
+                <title>Order Statuses REST API</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <create>1</create>
+                        <retrieve>1</retrieve>
+                        <update>1</update>
+                        <delete>0</delete>
+                    </admin>
+                </privileges>
+                <attributes module="api2">
+                    <entity_id>Order ID</entity_id>
+                    <increment_id>Order Increment ID</increment_id>
+                    <status>Order Status</status>
+                    <created_at>Created At</created_at>
+                    <entity_name>Entity Name</entity_name>
+                    <is_customer_notified>Customer Notified</is_customer_notified>
+                    <is_visible_on_front>Visible On Front</is_visible_on_front>
+                </attributes>
+                <routes>
+                    <route_collection>
+                        <route>/orders/:id/statuses</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                    <route_entity>
+                        <route>/orderstatuses/:id</route>
+                        <action_type>entity</action_type>
+                    </route_entity>
+                </routes>
+                <versions>1</versions>
+            </orderstatuses>
+            <!-- Order resources -->
+            <order translate="title" module="ApiExtension_Magento">
+                <group>sales</group>
+                <sort_order>0</sort_order>
+                <model>sales/api2_order</model>
+                <title>Orders REST API</title>
+                <privileges>
+                    <admin>
+                        <create>1</create>
+                        <retrieve>1</retrieve>
+                        <update>1</update>
+                        <delete>1</delete>
+                    </admin>
+                </privileges>
+                <routes>
+                    <route_entity>
+                        <route>/orders/:id</route>
+                        <action_type>entity</action_type>
+                    </route_entity>
+                    <route_collection>
+                        <route>/orders</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                </routes>
+                <attributes
+                        translate="entity_id increment_id created_at status shipping_description _payment_method base_currency_code store_currency_code store_name remote_ip store_to_order_rate subtotal subtotal_incl_tax discount_amount base_grand_total grand_total shipping_amount shipping_tax_amount shipping_incl_tax tax_amount _tax_name _tax_rate coupon_code base_discount_amount base_subtotal base_shipping_amount base_shipping_tax_amount base_tax_amount total_paid base_total_paid total_refunded base_total_refunded base_subtotal_incl_tax base_total_due total_due shipping_discount_amount base_shipping_discount_amount discount_description customer_balance_amount base_customer_balance_amount base_customer_balance_amount _gift_message _order_comments customer_id"
+                        module="api2">
+                    <entity_id>Order ID (internal)</entity_id>
+                    <items>Items</items>
+                    <increment_id>Order ID</increment_id>
+                    <created_at>Order Date</created_at>
+                    <status>Order Status</status>
+                    <country_id>Country ID</country_id>
+                    <payment_method>Payment Method</payment_method>
+                    <base_currency_code>Base Currency</base_currency_code>
+                    <store_currency_code>Order Currency</store_currency_code>
+                    <store_name>Store Name</store_name>
+                    <store_id>Store ID</store_id>
+                    <remote_ip>Placed from IP</remote_ip>
+                    <store_to_order_rate>Store Currency to Order Currency Rate</store_to_order_rate>
+                    <subtotal>Subtotal</subtotal>
+                    <subtotal_incl_tax>Subtotal Including Tax</subtotal_incl_tax>
+                    <discount_amount>Discount</discount_amount>
+                    <base_grand_total>Grand Total to Be Charged</base_grand_total>
+                    <grand_total>Grand Total</grand_total>
+                    <shipping_amount>Shipping Amount</shipping_amount>
+                    <shipping_tax_amount>Shipping Including Tax</shipping_tax_amount>
+                    <shipping_incl_tax>Shipping Tax</shipping_incl_tax>
+                    <shipping_description>Shipping description</shipping_description>
+                    <shipping_method_code>Shipping Code</shipping_method_code>
+                    <tax_amount>Tax Amount</tax_amount>
+                    <_tax_name>Tax Name</_tax_name>
+                    <_tax_rate>Tax Rate</_tax_rate>
+                    <coupon_code>Coupon Code</coupon_code>
+                    <base_discount_amount>Base Discount</base_discount_amount>
+                    <base_subtotal>Base Subtotal</base_subtotal>
+                    <base_shipping_amount>Base Shipping</base_shipping_amount>
+                    <base_shipping_tax_amount>Base Shipping Tax</base_shipping_tax_amount>
+                    <base_tax_amount>Base Tax Amount</base_tax_amount>
+                    <total_paid>Total Paid</total_paid>
+                    <base_total_paid>Base Total Paid</base_total_paid>
+                    <total_refunded>Total Refunded</total_refunded>
+                    <base_total_refunded>Base Total Refunded</base_total_refunded>
+                    <base_subtotal_incl_tax>Base Subtotal Including Tax</base_subtotal_incl_tax>
+                    <base_total_due>Base Total Due</base_total_due>
+                    <total_due>Total Due</total_due>
+                    <shipping_discount_amount>Shipping Discount</shipping_discount_amount>
+                    <base_shipping_discount_amount>Base Shipping Discount</base_shipping_discount_amount>
+                    <discount_description>Discount Description</discount_description>
+                    <customer_balance_amount>Customer Balance</customer_balance_amount>
+                    <base_customer_balance_amount>Base Customer Balance</base_customer_balance_amount>
+                    <_gift_message>Gift Message</_gift_message>
+                    <_order_comments>Order Comments</_order_comments>
+                    <customer_email>Customer email</customer_email>
+                    <is_guest>Is guest customer</is_guest>
+                </attributes>
+                <include_attributes>
+                    <customer>
+                        <read>
+                            <entity_id>1</entity_id>
+                            <increment_id>1</increment_id>
+                            <created_at>1</created_at>
+                            <status>1</status>
+                            <shipping_description>1</shipping_description>
+                            <_payment_method>1</_payment_method>
+                            <base_currency_code>1</base_currency_code>
+                            <store_currency_code>1</store_currency_code>
+                            <store_id>1</store_id>
+                            <subtotal>1</subtotal>
+                            <subtotal_incl_tax>1</subtotal_incl_tax>
+                            <discount_amount>1</discount_amount>
+                            <base_grand_total>1</base_grand_total>
+                            <grand_total>1</grand_total>
+                            <shipping_amount>1</shipping_amount>
+                            <shipping_tax_amount>1</shipping_tax_amount>
+                            <shipping_incl_tax>1</shipping_incl_tax>
+                            <tax_amount>1</tax_amount>
+                            <_tax_name>1</_tax_name>
+                            <_tax_rate>1</_tax_rate>
+                            <_gift_message>1</_gift_message>
+                            <_order_comments>1</_order_comments>
+                        </read>
+                    </customer>
+                </include_attributes>
+                <versions>1</versions>
+            </order>
+            <!-- Webhooks resources -->
+            <webhooks translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_webhooks</model>
+                <title>Webhooks</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <create>1</create>
+                        <retrieve>1</retrieve>
+                        <update>1</update>
+                        <delete>1</delete>
+                    </admin>
+                </privileges>
+                <attributes module="ApiExtension_Magento">
+                    <id>ID</id>
+                    <url>Hook URL</url>
+                    <code>Hook/event code</code>
+                    <description>Event description</description>
+                    <token>Secret token</token>
+                    <data>Event data that needs to be in callback</data>
+                    <active>Flag is active</active>
+                </attributes>
+                <routes>
+                    <route_collection>
+                        <route>/webhooks</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                    <route_entity>
+                        <route>/webhooks/:id</route>
+                        <action_type>entity</action_type>
+                    </route_entity>
+                </routes>
+                <versions>1</versions>
+            </webhooks>
+            <!-- Webhooks resources -->
+            <reindexers translate="title" module="ApiExtension_Magento">
+                <group>general</group>
+                <model>apiExtension/api2_reindexers</model>
+                <title>Reindexers</title>
+                <sort_order>0</sort_order>
+                <privileges>
+                    <admin>
+                        <create>1</create>
+                    </admin>
+                </privileges>
+                <attributes module="ApiExtension_Magento">
+                    <id>ID</id>
+                </attributes>
+                <routes>
+                    <route_collection>
+                        <route>/reindexers</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                    <route_entity>
+                        <route>/reindexers/:id</route>
+                        <action_type>entity</action_type>
+                    </route_entity>
+                </routes>
+                <versions>1</versions>
+            </reindexers>
+            <customer translate="title" module="ApiExtension_Magento">
+                <group>customer</group>
+                <sort_order>90</sort_order>
+                <model>customer/api2_customer</model>
+                <working_model>customer/customer</working_model>
+                <title>Customer ApiExtension</title>
+                <privileges>
+                    <admin>
+                        <retrieve>1</retrieve>
+                        <update>1</update>
+                        <delete>1</delete>
+                    </admin>
+                    <customer>
+                        <retrieve>1</retrieve>
+                        <update>1</update>
+                    </customer>
+                </privileges>
+                <attributes
+                        translate="entity_id last_logged_in firstname lastname email website_id created_in group_id confirmation disable_auto_group_change"
+                        module="api2">
+                    <entity_id>Customer ID</entity_id>
+                    <last_logged_in>Last Logged In</last_logged_in>
+                    <firstname>First Name</firstname>
+                    <lastname>Last Name</lastname>
+                    <email>Email</email>
+                    <addresses>Addresses</addresses>
+                    <website_id>Associate to Website</website_id>
+                    <created_in>Created From</created_in>
+                    <group_id>Group</group_id>
+                    <confirmation>Is Confirmed</confirmation>
+                    <disable_auto_group_change>Disable automatic group change based on VAT ID
+                    </disable_auto_group_change>
+                </attributes>
+                <exclude_attributes>
+                    <admin>
+                        <write>
+                            <entity_id>1</entity_id>
+                            <created_at>1</created_at>
+                            <created_in>1</created_in>
+                            <last_logged_in>1</last_logged_in>
+                        </write>
+                    </admin>
+                    <customer>
+                        <read>
+                            <entity_id>1</entity_id>
+                            <last_logged_in>1</last_logged_in>
+                            <website_id>1</website_id>
+                            <created_in>1</created_in>
+                            <group_id>1</group_id>
+                            <disable_auto_group_change>1</disable_auto_group_change>
+                            <confirmation>1</confirmation>
+                            <created_at>1</created_at>
+                        </read>
+                        <write>
+                            <entity_id>1</entity_id>
+                            <last_logged_in>1</last_logged_in>
+                            <website_id>1</website_id>
+                            <created_in>1</created_in>
+                            <group_id>1</group_id>
+                            <disable_auto_group_change>1</disable_auto_group_change>
+                            <confirmation>1</confirmation>
+                            <created_at>1</created_at>
+                        </write>
+                    </customer>
+                </exclude_attributes>
+                <validators>
+                    <eav>
+                        <admin>
+                            <entity_model>customer/customer</entity_model>
+                            <form_model>customer/form</form_model>
+                            <form_code>
+                                <update>adminhtml_customer</update>
+                            </form_code>
+                        </admin>
+                        <customer>
+                            <entity_model>customer/customer</entity_model>
+                            <form_model>customer/form</form_model>
+                            <form_code>
+                                <update>customer_account_edit</update>
+                            </form_code>
+                        </customer>
+                    </eav>
+                </validators>
+                <routes>
+                    <route_entity>
+                        <route>/customers/:id</route>
+                        <action_type>entity</action_type>
+                    </route_entity>
+                    <route_collection>
+                        <route>/customers</route>
+                        <action_type>collection</action_type>
+                    </route_collection>
+                </routes>
+                <versions>1</versions>
+            </customer>
+        </resources>
+        <acl>
+            <resources>
+                <magento translate="title" module="ApiExtension_Magento">
+                    <title>ApiExtension Magento</title>
+                    <sort_order>2000</sort_order>
+                    <version translate="title" module="ApiExtension_Magento">
+                        <title>Version</title>
+                    </version>
+                </magento>
+            </resources>
+        </acl>
+    </api2>
+</config>

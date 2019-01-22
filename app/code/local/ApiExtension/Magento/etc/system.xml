@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <apiExtension translate="label" module="apiExtension">
+            <label>ApiExtension</label>
+            <sort_order>0</sort_order>
+        </apiExtension>
+    </tabs>
+    <sections>
+        <apiExtension translate="label" module="apiExtension">
+            <label>Configuration</label>
+            <tab>apiExtension</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+
+            <groups>
+                <webhook translate="label">
+                    <label>Webhook</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled>
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </enabled>
+                    </fields>
+                </webhook>
+            </groups>
+        </apiExtension>
+    </sections>
+
+</config>

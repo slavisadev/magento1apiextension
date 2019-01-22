@@ -1,0 +1,14 @@
+{
+    "name": "ApiExtension Magento",
+    "description": "ApiExtension for Magento 1.9.x",
+    "keywords":[ "composer-installer", "magento", "apiExtension"],
+    "minimum-stability": "dev",
+    "homepage":"http://cerseilabs.com",
+    "license":"OSL-3.0",
+    "authors": [
+        {
+            "name": "Slavisa Prrisic",
+            "email": "slavisadev@gmail.com"
+        }
+    ]
+}
